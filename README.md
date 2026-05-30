@@ -11,6 +11,15 @@ NestJS + TypeScript service that wraps the Google PageSpeed Insights API. Analyz
 - Node.js 18+
 - Google PageSpeed Insights API key
 
+## How to get PAGESPEED_KEY
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Enable the [PageSpeed Insights API](https://console.cloud.google.com/apis/library/pagespeedonline.googleapis.com)
+3. Create an API key under **APIs & Services → Credentials**
+4. Set the key as `PAGESPEED_KEY` in your local `.env` and in Vercel project environment variables
+
+See the official guide: [PageSpeed Insights API — Get Started](https://developers.google.com/speed/docs/insights/v5/get-started)
+
 ## Setup
 
 ```bash
@@ -111,4 +120,4 @@ src/
 
 ## License
 
-MIT © 2026 [Piyush Mishra](https://github.com/PiyushMishra318)
+MIT © 2026 [piyushm.dev](https://piyushm.dev) · [piyush_mishra31@outlook.com](mailto:piyush_mishra31@outlook.com)
