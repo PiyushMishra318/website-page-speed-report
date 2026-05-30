@@ -1,7 +1,14 @@
 {
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "npm install",
   "functions": {
     "api/pagespeed.ts": {
       "maxDuration": 60
     }
-  }
+  },
+  "rewrites": [
+    { "source": "/api/pagespeed", "destination": "/api/pagespeed" },
+    { "source": "/(.*)", "destination": "/api/index" }
+  ]
 }
