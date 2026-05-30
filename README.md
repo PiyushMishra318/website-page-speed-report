@@ -46,6 +46,11 @@ Open `http://localhost:3000/`, enter a URL, and click **Analyze**. The demo UI s
 
 The layout uses a URL form at the top, then side-by-side desktop/mobile cards with color-coded performance scores (green ≥90, amber ≥50, red below), a metric grid for Core Web Vitals, and a short opportunities list.
 
+### Demo
+
+- **Live:** https://website-page-speed-report.vercel.app
+- Enter any public URL → **Analyze** → desktop/mobile scores, Core Web Vitals, and top opportunities
+
 Deploy to Vercel:
 
 ```bash
