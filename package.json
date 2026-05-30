@@ -1,17 +1,31 @@
 {
   "name": "website-page-speed-report",
-  "version": "1.0.0",
-  "description": "Crawl a website and generate a page speed report",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "Crawl a sitemap and generate PageSpeed Insights reports",
+  "author": "Piyush Mishra",
+  "license": "MIT",
+  "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "report": "npm run build && node dist/main.js",
+    "test": "jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
-    "dotenv": "^10.0.0",
-    "xml2js": "^0.4.23"
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "@vercel/node": "^3.2.29",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.2",
+    "@types/xml2js": "^0.4.14",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
