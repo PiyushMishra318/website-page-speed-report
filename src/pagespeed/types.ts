@@ -27,3 +27,9 @@ export interface PageReport {
   desktop: StrategyReport;
   mobile: StrategyReport;
 }
+
+export interface UrlAnalysis {
+  url: string;
+  desktop: StrategyReport;
+  mobile: StrategyReport;
+}

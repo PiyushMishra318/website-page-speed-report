@@ -2,8 +2,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen?logo=node.js&logoColor=white)](package.json)
+[![NestJS](https://img.shields.io/badge/NestJS-10-red?logo=nestjs&logoColor=white)](https://nestjs.com/)
 
-TypeScript CLI that reads a website sitemap, calls the Google PageSpeed Insights API for each URL (desktop and mobile), and writes a JSON performance report.
+NestJS + TypeScript service that wraps the Google PageSpeed Insights API. Analyze a single URL via HTTP or crawl a sitemap and write a JSON report from the CLI.
 
 ## Requirements
 
@@ -27,25 +28,67 @@ TARGET_WEBSITE=https://www.example.com
 REPORT_PATH=report.json
 ```
 
-## Web demo (Vercel)
+## Usage
 
-Deploy with `npx vercel --prod` and set `PAGESPEED_KEY` in the Vercel project settings. Open `/` and enter a URL to analyze desktop + mobile scores via `/api/pagespeed?url=...`.
+### Web demo (local or Vercel)
 
-## CLI usage
+```bash
+npm run start:dev
+```
+
+Open `http://localhost:3000/`, enter a URL, and view desktop + mobile scores.
+
+Deploy to Vercel:
+
+```bash
+npx vercel --prod
+```
+
+Set `PAGESPEED_KEY` in the Vercel project settings. Static UI is served from `public/`; the API runs as a serverless function at `/api/pagespeed`.
+
+### HTTP API
+
+```bash
+curl "http://localhost:3000/api/pagespeed?url=https://example.com"
+```
+
+### CLI (sitemap report)
 
 ```bash
 npm run report
 ```
 
-The tool waits 60 seconds between URLs to respect API rate limits.
+Reads `TARGET_WEBSITE/sitemap.xml`, runs PageSpeed for each URL (desktop + mobile), and writes `report.json`. Waits 60 seconds between URLs to respect API rate limits.
 
 ## Scripts
 
 | Script | Description |
 |--------|-------------|
-| `npm test` | Run unit tests (no live API calls) |
+| `npm run start:dev` | Start NestJS in watch mode (API + static UI) |
 | `npm run build` | Compile TypeScript |
-| `npm run report` | Build and generate `report.json` |
+| `npm test` | Run Jest unit tests (no live API calls) |
+| `npm run report` | Build and generate `report.json` from sitemap |
+
+## Project layout
+
+```text
+api/pagespeed.ts      # Vercel serverless handler
+public/               # Demo web UI
+src/
+├── pagespeed/        # NestJS PageSpeed module
+├── app.module.ts
+├── main.ts           # HTTP server
+└── cli.ts            # Sitemap report CLI
+```
+
+## Environment variables
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `PAGESPEED_KEY` | Yes | Google PageSpeed Insights API key |
+| `TARGET_WEBSITE` | CLI only | Site root used to fetch `/sitemap.xml` |
+| `REPORT_PATH` | No | Output path for CLI report (default: `report.json`) |
+| `PORT` | No | Local HTTP port (default: `3000`) |
 
 ## Output
 

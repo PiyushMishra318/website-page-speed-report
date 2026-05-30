@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { PageSpeedReportService } from '../src/report.service';
+import { ConfigService } from '@nestjs/config';
+import { PagespeedService } from '../src/pagespeed/pagespeed.service';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'GET') {
@@ -17,14 +18,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const service = new PageSpeedReportService(apiKey, 0);
-    const [desktop, mobile] = await Promise.all([
-      service.runPagespeed(url, 'desktop'),
-      service.runPagespeed(url, 'mobile'),
-    ]);
-    return res.status(200).json({ url, desktop, mobile });
+    const config = {
+      get: (key: string) => (key === 'PAGESPEED_KEY' ? apiKey : undefined),
+    } as ConfigService;
+    const service = new PagespeedService(config, 0);
+    const result = await service.analyzeUrl(url);
+    return res.status(200).json(result);
   } catch (err) {
     const message = err instanceof Error ? err.message : 'PageSpeed request failed';
-    return res.status(502).json({ error: message });
+    const status =
+      typeof err === 'object' &&
+      err !== null &&
+      'status' in err &&
+      typeof (err as { status?: number }).status === 'number'
+        ? (err as { status: number }).status
+        : 502;
+    return res.status(status).json({ error: message });
   }
 }

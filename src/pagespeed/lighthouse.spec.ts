@@ -1,4 +1,4 @@
-import { getMetrics, getOpportunities } from '../src/lighthouse';
+import { getMetrics, getOpportunities } from './lighthouse';
 
 describe('lighthouse helpers', () => {
   it('extracts failed opportunities', () => {
