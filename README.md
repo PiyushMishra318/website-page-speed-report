@@ -120,4 +120,4 @@ src/
 
 ## License
 
-MIT © 2026 [piyushm.dev](https://piyushm.dev) · [piyush_mishra31@outlook.com](mailto:piyush_mishra31@outlook.com)
+MIT © 2026 [piyushm.dev](https://piyushm.dev)
