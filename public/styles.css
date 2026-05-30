@@ -23,15 +23,14 @@
   --radius: 12px;
 }
 
-html,
-body {
-  min-height: 100%;
+html {
   height: 100%;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -71,8 +70,10 @@ header,
   font-size: 0.95rem;
 }
 
-.main {
-  flex: 1;
+.page-main,
+.main,
+main {
+  flex: 1 0 auto;
   max-width: 960px;
   margin: 0 auto;
   padding: 1.5rem 1rem 3rem;
@@ -300,7 +301,10 @@ header,
   font-size: 0.9rem;
 }
 
-.footer {
+.site-footer,
+.footer,
+footer {
+  flex-shrink: 0;
   margin-top: auto;
   padding: 1.5rem 1rem 2rem;
   text-align: center;
