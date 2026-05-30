@@ -8,12 +8,13 @@ export interface AuditSummary {
 }
 
 export interface LighthouseMetrics {
+  'Largest Contentful Paint': string;
+  'First Input Delay': string;
+  'Cumulative Layout Shift': string;
   'First Contentful Paint': string;
   'Speed Index': string;
   'Time To Interactive': string;
-  'First Meaningful Paint': string;
-  'First CPU Idle': string;
-  'Estimated Input Latency': string;
+  'Total Blocking Time': string;
 }
 
 export interface StrategyReport {

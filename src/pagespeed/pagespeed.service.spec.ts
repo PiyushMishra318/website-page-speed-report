@@ -30,12 +30,13 @@ describe('PagespeedService', () => {
         lighthouseResult: {
           categories: { performance: { score: 0.85 } },
           audits: {
+            'largest-contentful-paint': { displayValue: '2.5 s' },
+            'max-potential-fid': { displayValue: '80 ms' },
+            'cumulative-layout-shift': { displayValue: '0.05' },
             'first-contentful-paint': { displayValue: '1.0 s' },
             'speed-index': { displayValue: '2.0 s' },
             interactive: { displayValue: '3.0 s' },
-            'first-meaningful-paint': { displayValue: '1.5 s' },
-            'first-cpu-idle': { displayValue: '4.0 s' },
-            'estimated-input-latency': { displayValue: '10 ms' },
+            'total-blocking-time': { displayValue: '150 ms' },
           },
         },
       },

@@ -7,19 +7,39 @@
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <header>
-    <h1>Website Page Speed Report</h1>
-    <p>Run Google PageSpeed Insights for a single URL (desktop + mobile).</p>
+  <header class="header">
+    <div class="header__inner">
+      <h1>Website Page Speed Report</h1>
+      <p>Google PageSpeed Insights for any URL — desktop and mobile.</p>
+    </div>
   </header>
-  <main>
-    <form id="form">
-      <label for="url">Page URL</label>
-      <input id="url" type="url" required placeholder="https://example.com/" />
-      <button type="submit">Analyze</button>
-    </form>
-    <p id="status"></p>
-    <pre id="out" hidden></pre>
+
+  <main class="main">
+    <section class="card card--form">
+      <form id="form" class="form">
+        <label class="form__label" for="url">Page URL</label>
+        <div class="form__row">
+          <input
+            id="url"
+            class="form__input"
+            type="url"
+            required
+            placeholder="https://example.com/"
+            autocomplete="url"
+          />
+          <button id="submit" class="btn" type="submit">Analyze</button>
+        </div>
+      </form>
+    </section>
+
+    <div id="status" class="status" hidden aria-live="polite"></div>
+    <div id="results" class="results" hidden></div>
   </main>
+
+  <footer class="footer">
+    <p>MIT © 2026 · <a href="mailto:piyush_mishra31@outlook.com">piyush_mishra31@outlook.com</a> · Google PageSpeed Insights</p>
+  </footer>
+
   <script src="/app.js"></script>
 </body>
 </html>

@@ -37,12 +37,16 @@ export function getMetrics(lighthouseResult: {
 }): Record<string, string> {
   const audits = lighthouseResult.audits;
   return {
+    'Largest Contentful Paint':
+      audits['largest-contentful-paint']?.displayValue ?? '',
+    'First Input Delay':
+      audits['max-potential-fid']?.displayValue ?? '',
+    'Cumulative Layout Shift':
+      audits['cumulative-layout-shift']?.displayValue ?? '',
     'First Contentful Paint': audits['first-contentful-paint']?.displayValue ?? '',
     'Speed Index': audits['speed-index']?.displayValue ?? '',
     'Time To Interactive': audits['interactive']?.displayValue ?? '',
-    'First Meaningful Paint': audits['first-meaningful-paint']?.displayValue ?? '',
-    'First CPU Idle': audits['first-cpu-idle']?.displayValue ?? '',
-    'Estimated Input Latency':
-      audits['estimated-input-latency']?.displayValue ?? '',
+    'Total Blocking Time':
+      audits['total-blocking-time']?.displayValue ?? '',
   };
 }

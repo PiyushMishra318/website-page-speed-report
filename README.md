@@ -36,7 +36,15 @@ REPORT_PATH=report.json
 npm run start:dev
 ```
 
-Open `http://localhost:3000/`, enter a URL, and view desktop + mobile scores.
+Open `http://localhost:3000/`, enter a URL, and click **Analyze**. The demo UI shows:
+
+- **Performance scores** for desktop and mobile (color-coded 0–100)
+- **Core Web Vitals and lab metrics** when returned by PageSpeed (LCP, FID, CLS, FCP, Speed Index, TTI, TBT)
+- **Top improvement opportunities** (up to five per strategy)
+- **Loading state** while both strategies run (can take up to a minute)
+- **Clear error messages** when the URL is invalid or the API key is missing
+
+The layout uses a URL form at the top, then side-by-side desktop/mobile cards with color-coded performance scores (green ≥90, amber ≥50, red below), a metric grid for Core Web Vitals, and a short opportunities list.
 
 Deploy to Vercel:
 
@@ -44,7 +52,7 @@ Deploy to Vercel:
 npx vercel --prod
 ```
 
-Set `PAGESPEED_KEY` in the Vercel project settings. Static UI is served from `public/`; the API runs as a serverless function at `/api/pagespeed`.
+Set `PAGESPEED_KEY` in the Vercel project settings. Static UI is served from `public/` via `api/index.ts`; the PageSpeed API runs as a serverless function at `/api/pagespeed`.
 
 ### HTTP API
 
@@ -72,8 +80,10 @@ Reads `TARGET_WEBSITE/sitemap.xml`, runs PageSpeed for each URL (desktop + mobil
 ## Project layout
 
 ```text
-api/pagespeed.ts      # Vercel serverless handler
-public/               # Demo web UI
+api/
+├── index.ts          # Serves public/ on Vercel
+└── pagespeed.ts      # Vercel serverless handler
+public/               # Demo web UI (index.html, app.js, styles.css)
 src/
 ├── pagespeed/        # NestJS PageSpeed module
 ├── app.module.ts
