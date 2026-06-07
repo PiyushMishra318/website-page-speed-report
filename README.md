@@ -1,3 +1,8 @@
+# Author's Note
+
+> An old project I made just for fun. Nopthing new or impressive just a proxy for https://pagespeed.web.dev. When I was working a CMS Platform.
+> Used AI to upgrade the tech stack a bit recently. Probably will archive this at some point too.
+
 # website-page-speed-report
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
